@@ -44,11 +44,11 @@ COPY --from=builder /install /usr/local
 COPY . .
 
 # Make entrypoint executable
-RUN chmod +x entrypoint.sh
+RUN chmod +x entrypoint.sh migrate.sh
 
 # (Optional but recommended) Create non-root user
 RUN adduser -D appuser
-
+RUN chown -R appuser /app
 # Switch to non-root user for security
 USER appuser
 
